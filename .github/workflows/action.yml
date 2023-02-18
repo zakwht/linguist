@@ -18,7 +18,7 @@ jobs:
         from: 'yaml'
         to: 'json'
     - name: Save result
-      run: echo ${{ steps.yaml2json.outputs.output }} > linguist.json
+      run: echo '${{ steps.yaml2json.outputs.output }}' > linguist.json
     - name: Commit changes
     # https://github.com/orgs/community/discussions/26560
       run: |
