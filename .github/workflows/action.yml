@@ -12,11 +12,11 @@ jobs:
       run: curl https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml > linguist.yml
     - name: Convert to JSON
       uses: fabasoad/data-format-converter-action@main
-        id: yaml2json
-        with:
-          input: 'linguist.yml'
-          from: 'yaml'
-          to: 'json'
+      id: yaml2json
+      with:
+        input: 'linguist.yml'
+        from: 'yaml'
+        to: 'json'
     - name: Save result
       run: echo "${{ steps.yaml2json.outputs.output }}" > linguist.json
     - name: Commit changes
