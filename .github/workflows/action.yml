@@ -1,7 +1,7 @@
 name: fetch-linguist
-on:
-  schedule:
-    - cron: 0 0 * * *
+on: [push]
+  # schedule:
+  #   - cron: 0 0 * * *
 jobs:
   fetch:
     runs-on: macos-latest
@@ -19,6 +19,12 @@ jobs:
         to: 'json'
     - name: Save result
       run: echo -e ${{ toJson(steps.yaml2json.outputs.output) }} > linguist.json
+    - name: Update linguist.json count
+      uses: jossef/action-set-json-field@v2.1
+      with:
+        file: linguist.json
+        field: count
+        value: ${{ steps.yaml2json.outputs.output }} | | jq length
     - name: Commit changes
     # https://github.com/orgs/community/discussions/26560
       run: |
