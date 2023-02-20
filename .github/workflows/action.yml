@@ -22,8 +22,8 @@ jobs:
     - name: Count languages
       uses: sergeysova/jq-action@v2
       id: jqcount
-        with:
-          cmd: 'jq length linguist.json'
+      with:
+        cmd: 'jq length linguist.json'
     - name: Update linguist.json count
       uses: jossef/action-set-json-field@v2.1
       with:
