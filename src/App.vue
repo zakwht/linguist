@@ -72,7 +72,7 @@ export default {
           v-model="includeTrivial"
           @input="
             (e) => {
-              includeTrivial = e.target.checked;
+              includeTrivial = (e.target as HTMLInputElement).checked;
               setLanguages();
             }
           "
@@ -85,7 +85,7 @@ export default {
           v-model="includeChild"
           @input="
             (e) => {
-              includeChild = e.target.checked;
+              includeChild = (e.target as HTMLInputElement).checked;
               setLanguages();
             }
           "
@@ -108,7 +108,7 @@ export default {
           :checked="filterType == x"
           @click="
             (e) => {
-              filterType = e.target.value;
+              filterType = (e.target as HTMLInputElement).value as typeof filterType;
               setLanguages();
             }
           "
