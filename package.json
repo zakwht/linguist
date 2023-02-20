@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
+    "start": "vite",
     "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit"
+    "build": "vite build --base=/linguist/",
+    "prebuild": "vue-tsc --noEmit",
+    "deploy": "git add dist && git commit -m 'adding dist subtree' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "vue": "^3.2.45"
