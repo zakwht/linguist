@@ -24,7 +24,7 @@ jobs:
       with:
         file: linguist.json
         field: count
-        value: ${{ steps.yaml2json.outputs.output }} | jq length
+        value: ${{ steps.yaml2json.outputs.output | jq length}} 
     - name: Commit changes
     # https://github.com/orgs/community/discussions/26560
       run: |
