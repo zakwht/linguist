@@ -9,9 +9,11 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 18.x
+        node-version: '18.x'
     - name: Build app
-      run: npm run build
+      run: | 
+        npm install
+        npm run build
     - name: Commit changes
     # https://github.com/orgs/community/discussions/26560
       run: |
