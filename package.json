@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "build": "vite build --base=/linguist/",
     "prebuild": "vue-tsc --noEmit",
-    "deploy": "git add dist && git commit -m 'adding dist subtree' && git subtree push -f --prefix dist origin gh-pages"
+    "deploy": "git add dist && git commit -m 'adding dist subtree' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "vue": "^3.2.45"
