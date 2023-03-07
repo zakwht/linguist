@@ -31,10 +31,36 @@ jobs:
         field: __count
         value: ${{ steps.jqcount.outputs.value }}
     - name: Commit changes
+      id: commit
     # https://github.com/orgs/community/discussions/26560
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions"
         git add linguist.yml linguist.json
-        git diff-index --quiet HEAD || git commit -m "Update data"
+        git diff-index --quiet HEAD || git commit -m "Update data" && echo "DIFF=true" >> $GITHUB_OUTPUT
         git push
+
+  deploy:
+    if: steps.commit.outputs.diff != null
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    - name: Build app
+      run: | 
+        npm install
+        npm run build
+    - name: Commit changes
+    # https://gist.github.com/tduarte/eac064b4778711b116bb827f8c9bef7b
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions"
+        git add dist && git commit -m 'adding dist subtree'
+        git subtree split --prefix dist -b gh-pages 
+        git push -f origin gh-pages:gh-pages 
+        git branch -D gh-pages 
+
