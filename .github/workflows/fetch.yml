@@ -39,8 +39,9 @@ jobs:
         git push
 
   deploy:
-    if: steps.commit.outputs.diff != null
     runs-on: ubuntu-latest
+    needs: fetch
+    if: needs.fetch.outputs.output1 != null
     steps:
     - name: Checkout
       uses: actions/checkout@v3
