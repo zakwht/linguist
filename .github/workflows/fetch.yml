@@ -39,6 +39,7 @@ jobs:
         git config --local user.name "github-actions"
         git add linguist.yml linguist.json
         git diff-index --quiet HEAD || git commit -m "Update data"
+        git diff-index --quiet HEAD || echo "diff=true"
         git diff-index --quiet HEAD || echo "diff=true" >> $GITHUB_OUTPUT
         echo "abc=abc" >> $GITHUB_OUTPUT
         git push

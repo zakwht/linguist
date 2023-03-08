@@ -9719,34 +9719,5 @@
     "ace_mode": "text",
     "language_id": 374521672
   },
-  "wisp": {
-    "type": "programming",
-    "ace_mode": "clojure",
-    "codemirror_mode": "clojure",
-    "codemirror_mime_type": "text/x-clojure",
-    "color": "#7582D1",
-    "extensions": [
-      ".wisp"
-    ],
-    "tm_scope": "source.clojure",
-    "language_id": 420
-  },
-  "xBase": {
-    "type": "programming",
-    "color": "#403a40",
-    "aliases": [
-      "advpl",
-      "clipper",
-      "foxpro"
-    ],
-    "extensions": [
-      ".prg",
-      ".ch",
-      ".prw"
-    ],
-    "tm_scope": "source.harbour",
-    "ace_mode": "text",
-    "language_id": 421
-  },
   "__count": "689"
 }
