@@ -9678,16 +9678,6 @@
     "ace_mode": "text",
     "language_id": 418
   },
-  "q": {
-    "type": "programming",
-    "extensions": [
-      ".q"
-    ],
-    "tm_scope": "source.q",
-    "ace_mode": "text",
-    "color": "#0040cd",
-    "language_id": 970539067
-  },
   "reStructuredText": {
     "type": "prose",
     "color": "#141414",
