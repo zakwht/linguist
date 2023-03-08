@@ -3,6 +3,8 @@ on: push
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    outputs:
+      diff: ${{ steps.commit.outputs.diff }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -37,7 +39,6 @@ jobs:
         git add linguist.yml linguist.json
         git diff-index --quiet HEAD || git commit -m "Update data"
         git diff-index --quiet HEAD || echo "diff=true" >> $GITHUB_OUTPUT
-        echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
         git push
 
   test: 
@@ -46,7 +47,7 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${{ needs.fetch.outputs.build_id }}
+        echo ${{ needs.fetch.outputs.diff }}
         echo 'a'
 
   deploy:
