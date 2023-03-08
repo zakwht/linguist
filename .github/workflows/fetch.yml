@@ -45,7 +45,7 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${{ needs.build.outputs.diff }}
+        echo ${{ needs.fetch.outputs.diff }}
         echo 'a'
 
   deploy:
