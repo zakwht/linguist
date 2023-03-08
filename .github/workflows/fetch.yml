@@ -38,6 +38,13 @@ jobs:
         git diff-index --quiet HEAD || git commit -m "Update data" && echo "diff=true" >> $GITHUB_OUTPUT
         git push
 
+  test: 
+    runs-on: ubuntu-latest
+    needs: fetch
+    steps:
+    - name: test2
+      run: "echo ${{ needs.build.outputs.diff }}"
+
   deploy:
     runs-on: ubuntu-latest
     needs: fetch
