@@ -46,8 +46,7 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${{ needs.fetch.outputs.        echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
- }}
+        echo ${{ needs.fetch.outputs.build_id }}
         echo 'a'
 
   deploy:
