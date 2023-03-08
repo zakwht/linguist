@@ -1,5 +1,7 @@
 name: deploy
-on: [push]
+on:  
+  discussion:
+    types: [created, edited, answered]
 jobs:
   deploy:
     runs-on: ubuntu-latest
