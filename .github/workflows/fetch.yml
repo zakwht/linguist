@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       diff: ${{ steps.commit.outputs.diff }}
+      abc: ${{ steps.commit.outputs.abc }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -39,6 +40,7 @@ jobs:
         git add linguist.yml linguist.json
         git diff-index --quiet HEAD || git commit -m "Update data"
         git diff-index --quiet HEAD || echo "diff=true" >> $GITHUB_OUTPUT
+        echo "abc=abc" >> $GITHUB_OUTPUT
         git push
 
   test: 
@@ -48,6 +50,7 @@ jobs:
     - name: test2
       run: |
         echo ${{ needs.fetch.outputs.diff }}
+        echo ${{ needs.fetch.outputs.abc }}
         echo 'a'
 
   deploy:
